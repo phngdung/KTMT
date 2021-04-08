@@ -1,0 +1,49 @@
+.data  
+
+  str1: .asciiz "\nPlease enter a number: " 
+
+  str2: .asciiz "\n2's complement: " 
+
+.text 
+
+.globl main 
+
+main: 
+
+  
+
+  # Input 
+
+  addi $v0, $zero, 4 
+
+  la $a0, str1 
+
+  syscall 
+
+  addi $v0, $zero, 5 
+
+  syscall 
+
+  move $s0, $v0 
+
+   
+
+  # 2's complement 
+
+  xori $s0, $s0, 0xFFFFFFFF 
+
+  addi $s0, $s0, 1 
+
+   
+
+  addi $v0, $zero, 4 
+
+  la $a0, str2 
+
+  syscall 
+
+  addi $v0, $zero, 1 
+
+  move $a0, $s0 
+
+  syscall 
