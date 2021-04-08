@@ -1,0 +1,23 @@
+.data
+str1: .asciiz "\nNhap x: "
+str2: .asciiz "\nGia tri y = "
+
+.text
+main:
+#khoi tao
+
+#nhap x
+la $a0, str1
+addi $v0, $zero, 4
+syscall
+addi $v0, $zero, 5
+syscall
+move $t0, $v0
+
+#tinh y
+mul $s0,$t0,$t0
+mul $s0,$s0,5
+mul $s1,$t0,2
+add $v0, $s0,$s1
+addi $v0, $v0,3
+syscall

@@ -1,0 +1,49 @@
+.data 
+	str0: .asciiz "\nNhap vao x: "
+	str4: .asciiz "\nx in hexa: "
+	str1: .ascii "\nExtract MSB of $s0"
+	str2: .ascii "\nClear LSB of $s0"
+.text
+.globl main
+main:
+  li $t0,4
+  # Nhap vao gia tri x
+  addi $v0, $zero, 4
+  la $a0, str0
+  syscall
+  
+  addi $v0, $zero, 5
+  syscall
+  move $s0, $v0
+  
+  #Input value
+  addi $v0, $zero, 4
+  la $a0, str4
+  syscall
+  
+  addi $v0, $zero, 34
+  move $a0, $s0
+  syscall
+  
+  #Extract MSB of $s0
+  addi $v0, $zero, 4
+  la $a0, str1
+  syscall
+  
+  srl $s1, $s0, 24
+  addi $v0, $zero, 34
+  move $a0, $s1
+  syscall
+  
+  #Extract MSB of $s0
+  addi $v0, $zero, 4
+  la $a0, str2
+  syscall
+  
+  srl $s1, $s0, 8
+  sll $s2, $s1, 8
+  addi $v0, $zero, 34
+  move $a0, $s2
+  syscall
+  
+  

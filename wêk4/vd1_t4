@@ -1,0 +1,115 @@
+.data 
+  str1: .asciiz "\nNhap vao gia tri x: "
+  str2: .asciiz "\nResult after sll 4 bits: "
+  str3: .asciiz "\nResult after sllv 4 bits: "
+  str4: .asciiz "\nInput value in binary: "
+  str5: .asciiz "\nResult after srl 4 bits: "
+  str6: .asciiz "\nResult after srlv 4 bits: "
+  str7: .asciiz "\nResult after sra 4 bits: "
+  str8: .asciiz "\nResult after srav 4 bits: "
+  str9: .asciiz "\nResult after rol 4 bits: "
+  str10: .asciiz "\nResult after rar 4 bits: "
+.text
+.globl main
+main:
+  li $t0,4
+  # Nhap vao gia tri x
+  addi $v0, $zero, 4
+  la $a0, str1
+  syscall
+  
+  addi $v0, $zero, 5
+  syscall
+  move $s0, $v0
+  
+  #Result after sll 4 bits
+  addi $v0, $zero, 4
+  la $a0, str2
+  syscall
+  
+  sll $s1, $s0, 4
+  addi $v0, $zero, 35
+  move $a0, $s1
+  syscall
+  
+  #Result after sllv 4 bits
+  addi $v0, $zero, 4
+  la $a0, str3
+  syscall
+  
+  sllv $s1, $s0, $t0
+  addi $v0, $zero, 35
+  move $a0, $s1
+  syscall
+  
+  #Input value
+  addi $v0, $zero, 4
+  la $a0, str4
+  syscall
+  
+  addi $v0, $zero, 35
+  move $a0, $s0
+  syscall
+  
+  #Result after srl 4 bits
+  addi $v0, $zero, 4
+  la $a0, str5
+  syscall
+  
+  srl $s1, $s0, 4
+  addi $v0, $zero, 35
+  move $a0, $s1
+  syscall
+  
+  #Result after srlv 4 bits
+  addi $v0, $zero, 4
+  la $a0, str6
+  syscall
+  
+  srlv $s1, $s0, $t0
+  addi $v0, $zero, 35
+  move $a0, $s1
+  syscall
+  
+  #Result after sra 4 bits
+  addi $v0, $zero, 4
+  la $a0, str7
+  syscall
+  
+  sra $s1, $s0, 4
+  addi $v0, $zero, 35
+  move $a0, $s1
+  syscall
+  
+  #Result after srav 4 bits
+  addi $v0, $zero, 4
+  la $a0, str8
+  syscall
+  
+  srav $s1, $s0, $t0
+  addi $v0, $zero, 35
+  move $a0, $s1
+  syscall
+  
+  #Result after rol 4 bits
+  addi $v0, $zero, 4
+  la $a0, str9
+  syscall
+  
+  rol $s1, $s0, 4
+  addi $v0, $zero, 35
+  move $a0, $s1
+  syscall
+  
+  #Result after ror 4 bits
+  addi $v0, $zero, 4
+  la $a0, str9
+  syscall
+  
+  ror $s1, $s0, $t0
+  addi $v0, $zero, 35
+  move $a0, $s1
+  syscall
+  
+  
+  
